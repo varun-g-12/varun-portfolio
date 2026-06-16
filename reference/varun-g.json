@@ -1,0 +1,511 @@
+{
+  "picture": {
+    "hidden": false,
+    "url": "",
+    "size": 64,
+    "rotation": 0,
+    "aspectRatio": 1,
+    "borderRadius": 0,
+    "borderColor": "rgba(0, 0, 0, 0)",
+    "borderWidth": 0,
+    "shadowColor": "rgba(0, 0, 0, 0.5)",
+    "shadowWidth": 0
+  },
+  "basics": {
+    "name": "Varun G",
+    "headline": "GenAI Developer",
+    "email": "varungangu1@gmail.com",
+    "phone": "+91-9731416185",
+    "location": "Bengaluru",
+    "website": {
+      "url": "https://www.linkedin.com/in/varun-g-1b6757343",
+      "label": "LinkedIn"
+    },
+    "customFields": [
+      {
+        "id": "ngq9533yxbtgmhjqf32ear6m",
+        "icon": "medium-logo",
+        "text": "",
+        "link": ""
+      }
+    ]
+  },
+  "summary": {
+    "title": "Summary",
+    "icon": "",
+    "columns": 1,
+    "hidden": false,
+    "content": "<p>GenAI Developer specializing in enterprise AI solutions with 4+ years of Python development experience. Proven track record of reducing operational time by 95% through AI-powered automation (GRD project). Expert in building RAG-based chatbots, document processing pipelines, and data extraction systems using Langchain, Langgraph, and GPT-4o. Awarded for innovative AI solutions at MITC Hackathon 2024.</p>"
+  },
+  "sections": {
+    "profiles": {
+      "title": "Profiles",
+      "icon": "",
+      "columns": 1,
+      "hidden": true,
+      "items": []
+    },
+    "experience": {
+      "title": "Experience",
+      "icon": "",
+      "columns": 1,
+      "hidden": false,
+      "items": [
+        {
+          "id": "tdlkpngmy1j0i9dnmysgyw6q",
+          "hidden": false,
+          "company": "Merck Group",
+          "position": "GenAI developer",
+          "location": "Bengaluru",
+          "period": "2024-Present",
+          "website": {
+            "url": "",
+            "label": "",
+            "inlineLink": false
+          },
+          "description": "<ul><li><p>Proficient in developing AI-powered applications with a focus on Generative AI.</p></li><li><p>Expertise in building conversational AI systems, document processing pipelines, and data extraction solutions.</p></li><li><p>Hands-on experience with Langchain, Langgraph and vector databases like Qdrant for efficient document retrieval and multi-modal data access.</p></li><li><p>Proven ability to optimize complex processes, significantly improving operational efficiency and reducing task completion times.</p></li><li><p>Award-winning innovator, recognized for delivering cutting-edge AI solutions in hackathons and internal competitions.</p></li></ul>",
+          "roles": []
+        },
+        {
+          "id": "e7tbz2wegzm8gvz8l7dju3un",
+          "hidden": false,
+          "company": "Merck Group",
+          "position": "Python developer",
+          "location": "Bengaluru",
+          "period": "2021-2024",
+          "website": {
+            "url": "",
+            "label": "",
+            "inlineLink": false
+          },
+          "description": "<ul><li><p>Engineered and implemented a comprehensive end-to-end data transformation pipeline, revolutionising the company's data processing capabilities.</p></li><li><p>Developed robust Python scripts to extract and parse complex, multi-sheet Excel files, handling various data formats and inconsistencies</p></li><li><p>Implemented data cleaning and validation procedures, including handling of missing values and data type standardization, ensuring data integrity</p></li><li><p>Integrated automated data quality checks and error logging mechanisms, significantly reducing manual intervention and improving data reliabilit</p></li><li><p>Enabled the creation of interactive Tableau dashboards and reports, empowering stakeholders with real-time, data-driven insights for strategic decision-making</p></li></ul>",
+          "roles": []
+        },
+        {
+          "id": "l7ppnsn9x0tfzenzbk9qd2rq",
+          "hidden": false,
+          "company": "Merck Group",
+          "position": "Application support engineer",
+          "location": "Bengaluru",
+          "period": "2019-2021",
+          "website": {
+            "url": "",
+            "label": "",
+            "inlineLink": false
+          },
+          "description": "<ul><li><p>Started professional career as an Application Support Engineer, demonstrating strong technical foundation and problem-solving skills</p></li><li><p>Provided comprehensive support for both GxP (Good Practice) and Non-GxP applications, ensuring regulatory compliance and operational efficiency</p></li><li><p>Developed expertise in critical process workflows, including Request for Change (RFC) and change management procedures, contributing to streamlined operations and risk mitigation</p></li></ul>",
+          "roles": []
+        }
+      ]
+    },
+    "education": {
+      "title": "Education",
+      "icon": "",
+      "columns": 2,
+      "hidden": false,
+      "items": [
+        {
+          "id": "s1a0krzyzjtzhljc8k0p8ar2",
+          "hidden": false,
+          "school": "UAS, Dharwad",
+          "degree": "B.Sc.",
+          "area": "Agriculture",
+          "grade": "7.25",
+          "location": "",
+          "period": "2012 - 2016",
+          "website": {
+            "url": "",
+            "label": "",
+            "inlineLink": false
+          },
+          "description": ""
+        },
+        {
+          "id": "uro4kwc2bjeol9mice9kvv88",
+          "hidden": false,
+          "school": "G.K.V.K Bengaluru",
+          "degree": "M.Sc.",
+          "area": "Agriculture Statistics",
+          "grade": "8.2",
+          "location": "",
+          "period": "2016-2018",
+          "website": {
+            "url": "",
+            "label": "",
+            "inlineLink": false
+          },
+          "description": ""
+        }
+      ]
+    },
+    "projects": {
+      "title": "Projects",
+      "icon": "",
+      "columns": 1,
+      "hidden": false,
+      "items": [
+        {
+          "id": "blm6zvd0we1h1fx2xmkgmsb0",
+          "hidden": false,
+          "name": "BrAIn (Breeze AI Navigator)",
+          "period": "April 2023 - Feb 2024",
+          "website": {
+            "url": "",
+            "label": "",
+            "inlineLink": false
+          },
+          "description": "<p>Developed an AI chatbot with access to Breeze SOPs and training documents, supported by an automated data ingestion pipeline using AWS Lambda, S3, and SharePoint. Leveraging Azure OpenAI's text-embedding-3-large model and Qdrant DB, we built a vector store for efficient document retrieval. The chatbot’s interface was created using Streamlit with a Python and Langchain backend, incorporating multi-vector retrieval for parent-child document relationships and context-aware conversations using router and question reframe chains. Powered by the GPT-4o model, the chatbot delivers accurate responses with a citation system providing page-level references from source documents.</p>"
+        },
+        {
+          "id": "nrx043bh0m3aw5i59thhar0h",
+          "hidden": false,
+          "name": "PACO (Protocol Analysis for Complexity Optimisation)",
+          "period": "Dec 2023 - March 2024",
+          "website": {
+            "url": "",
+            "label": "",
+            "inlineLink": false
+          },
+          "description": "<p>Developed an AI-powered application to extract structured data from unstructured Word and PDF documents, featuring a document processing pipeline using PyMuPDF and the Unstructured library. The application included a user-friendly Streamlit interface for document uploading and result downloading. Custom system prompts were engineered for various extraction tasks, including JSON schema specifications, and Langchain's structured output function ensured consistent JSON-formatted results. Powered by the GPT-4o model for high-accuracy information extraction, the app implemented a batch processing system to parallelize tasks and improve efficiency. Additionally, we developed a conversion process to transform extracted JSON data into a downloadable Excel format for easy user review.</p>"
+        },
+        {
+          "id": "ci6tl2qgln8wfkrmh0ravl37",
+          "hidden": false,
+          "name": "GRD (Global Response Document)",
+          "period": "Aug 2024-Oct 2025",
+          "website": {
+            "url": "",
+            "label": "",
+            "inlineLink": false
+          },
+          "description": "<p>Developed an AI-powered application to generate Global Response Documents (GRDs) for healthcare professionals, reducing the GRD creation time from 3–4 hours to just 10–20 minutes. The solution included a document preprocessing pipeline using PyMuPDF for text extraction and AWS Textract for table extraction. Tailored system prompts were created based on user-selected Therapeutic Area (TA), product, and GRD type, while a batch processing system enabled efficient multi-page document handling. Using a single-shot prompting approach, the application maintained a scientific tone and format. Integrated with the GPT-4o model via Langchain for both data extraction and summarization, the app featured a Streamlit-based user interface for easy interaction and document uploading. It also provided a citation system for page-level references and generated output in downloadable Word format for seamless distribution and editing.</p>"
+        },
+        {
+          "id": "oql3m0z8ps2yrt33ggsjfo7z",
+          "hidden": false,
+          "name": "MiNE MCP",
+          "period": "Aug-2025 - Present",
+          "website": {
+            "url": "",
+            "label": "",
+            "inlineLink": false
+          },
+          "description": "<p>Takenup the MCP server setup for MiNE project as exploration/POC task. </p>"
+        }
+      ]
+    },
+    "skills": {
+      "title": "Skills",
+      "icon": "",
+      "columns": 3,
+      "hidden": false,
+      "items": [
+        {
+          "id": "isdqvbnrm3645j1fnvwgfwdt",
+          "hidden": false,
+          "icon": "",
+          "iconColor": "",
+          "name": "Programming language",
+          "proficiency": "",
+          "level": 4,
+          "keywords": [
+            "Python"
+          ]
+        },
+        {
+          "id": "fp2dmym93sjbk1tk07fl5wga",
+          "hidden": false,
+          "icon": "",
+          "iconColor": "",
+          "name": "Generative AI",
+          "proficiency": "",
+          "level": 4,
+          "keywords": [
+            "Large Language Models (LLM)",
+            "Prompt engineering",
+            "Langchain",
+            "Langraph"
+          ]
+        },
+        {
+          "id": "ez4tqocanmjuxclntrqu3mda",
+          "hidden": false,
+          "icon": "",
+          "iconColor": "",
+          "name": "Cloud & DevOps",
+          "proficiency": "",
+          "level": 2,
+          "keywords": [
+            "AWS",
+            "Git",
+            "Docker"
+          ]
+        },
+        {
+          "id": "xk3sjwdu0m5seefb27hpi0kk",
+          "hidden": false,
+          "icon": "",
+          "iconColor": "",
+          "name": "Web Development",
+          "proficiency": "",
+          "level": 3,
+          "keywords": [
+            "Streamlit"
+          ]
+        },
+        {
+          "id": "lvtgvjxb4wgx89plw94tlyqw",
+          "hidden": false,
+          "icon": "",
+          "iconColor": "",
+          "name": "Project Management",
+          "proficiency": "",
+          "level": 4,
+          "keywords": [
+            "Agile methodologies"
+          ]
+        }
+      ]
+    },
+    "languages": {
+      "title": "Languages",
+      "icon": "",
+      "columns": 3,
+      "hidden": false,
+      "items": [
+        {
+          "id": "ww2sqznw9dalkm6ns7b4sbd4",
+          "hidden": false,
+          "language": "Kannada",
+          "fluency": "",
+          "level": 5
+        },
+        {
+          "id": "a180krsyh42j779e00bomwut",
+          "hidden": false,
+          "language": "English",
+          "fluency": "",
+          "level": 5
+        },
+        {
+          "id": "yaqop5g989drqtwlstde6s7p",
+          "hidden": false,
+          "language": "Hindi",
+          "fluency": "",
+          "level": 2
+        }
+      ]
+    },
+    "interests": {
+      "title": "Interests",
+      "icon": "",
+      "columns": 1,
+      "hidden": true,
+      "items": []
+    },
+    "awards": {
+      "title": "Awards",
+      "icon": "",
+      "columns": 2,
+      "hidden": false,
+      "items": [
+        {
+          "id": "fg8585g2fn5mbkeqy0pr9fhd",
+          "hidden": false,
+          "title": "Be Curious and Innovate Boldly Award",
+          "awarder": "Runner-up",
+          "date": "2024",
+          "website": {
+            "url": "",
+            "label": "",
+            "inlineLink": false
+          },
+          "description": ""
+        },
+        {
+          "id": "tj9ijp89lktde651lgxelrai",
+          "hidden": false,
+          "title": "MITC Hackathon",
+          "awarder": "Runner-up",
+          "date": "2024",
+          "website": {
+            "url": "",
+            "label": "",
+            "inlineLink": false
+          },
+          "description": ""
+        }
+      ]
+    },
+    "certifications": {
+      "title": "Certifications",
+      "icon": "",
+      "columns": 1,
+      "hidden": true,
+      "items": []
+    },
+    "publications": {
+      "title": "Publications",
+      "icon": "",
+      "columns": 1,
+      "hidden": true,
+      "items": []
+    },
+    "volunteer": {
+      "title": "Volunteering",
+      "icon": "",
+      "columns": 1,
+      "hidden": true,
+      "items": []
+    },
+    "references": {
+      "title": "References",
+      "icon": "",
+      "columns": 1,
+      "hidden": true,
+      "items": []
+    }
+  },
+  "customSections": [
+    {
+      "title": "Projects",
+      "icon": "",
+      "columns": 1,
+      "hidden": false,
+      "id": "vy37gqadk1sd8s7cl0r1wd4o",
+      "type": "experience",
+      "items": [
+        {
+          "id": "ipbcgy03spaar9jlqavdty0f",
+          "hidden": false,
+          "company": "Text to SQL Conversational App",
+          "position": "POC",
+          "location": "",
+          "period": "2023-2024",
+          "website": {
+            "url": "",
+            "label": "",
+            "inlineLink": false
+          },
+          "description": "<p>Developed a proof-of-concept application enabling natural language queries on Foundry data tables, featuring a conversational AI system using the GPT-4o model and Langgraph for agentic workflows. A SQL query agent was designed to convert natural language inputs into accurate SQL queries, supported by a custom tool to execute these queries on Foundry tables and retrieve relevant data. An answer agent analyzed query results and generated human-readable responses. The application included a Streamlit-based interface for seamless user interaction, integrating table schema information and custom system prompts to improve query accuracy and enhance data accessibility through natural language interaction.</p>",
+          "roles": []
+        },
+        {
+          "id": "dhmnonid0i0a35ksbuhau692",
+          "hidden": false,
+          "company": "MiNE",
+          "position": "Report generation tool ",
+          "location": "",
+          "period": "Oct 2025 - Present",
+          "website": {
+            "url": "",
+            "label": "",
+            "inlineLink": false
+          },
+          "description": "<p>Built an AI-powered tool that automatically creates reports by gathering information from multiple sources (social media, scientific articles, and medical data). Designed a two-step process: first, the system extracts key information from user questions to quickly filter through millions of database records; second, it uses smart retrieval methods to find the most relevant data and generate accurate reports.</p>",
+          "roles": []
+        },
+        {
+          "id": "x3h1rhyq7kqe5dpzcoq29fzm",
+          "hidden": false,
+          "company": "Vibe coding",
+          "position": "Personal exploration",
+          "location": "",
+          "period": "",
+          "website": {
+            "url": "https://varun-g-12.github.io/ResumeWebsite/",
+            "label": "",
+            "inlineLink": false
+          },
+          "description": "<p>Conducted an independent research project exploring AI-powered development workflows by leveraging Claude Code's \"vibe coding\" approach to investigate how developers with limited UI experience can utilize AI coding assistants to build fully functional user interfaces.</p>",
+          "roles": []
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "template": "bronzor",
+    "layout": {
+      "sidebarWidth": 35,
+      "pages": [
+        {
+          "fullWidth": false,
+          "main": [
+            "summary",
+            "profiles",
+            "experience",
+            "volunteer",
+            "references"
+          ],
+          "sidebar": [
+            "interests",
+            "certifications",
+            "publications"
+          ]
+        },
+        {
+          "fullWidth": true,
+          "main": [
+            "projects"
+          ],
+          "sidebar": []
+        },
+        {
+          "fullWidth": true,
+          "main": [
+            "vy37gqadk1sd8s7cl0r1wd4o",
+            "education",
+            "skills",
+            "awards",
+            "languages"
+          ],
+          "sidebar": []
+        }
+      ]
+    },
+    "page": {
+      "gapX": 4,
+      "gapY": 6,
+      "marginX": 18,
+      "marginY": 18,
+      "format": "a4",
+      "locale": "en-US",
+      "hideLinkUnderline": false,
+      "hideIcons": false,
+      "hideSectionIcons": true
+    },
+    "design": {
+      "level": {
+        "icon": "star",
+        "type": "circle"
+      },
+      "colors": {
+        "primary": "rgba(220, 38, 38, 1)",
+        "text": "rgba(0, 0, 0, 1)",
+        "background": "rgba(255, 255, 255, 1)"
+      }
+    },
+    "typography": {
+      "body": {
+        "fontFamily": "IBM Plex Serif",
+        "fontWeights": [
+          "400",
+          "400",
+          "600"
+        ],
+        "fontSize": 10.5,
+        "lineHeight": 1.5
+      },
+      "heading": {
+        "fontFamily": "IBM Plex Serif",
+        "fontWeights": [
+          "600"
+        ],
+        "fontSize": 13.5,
+        "lineHeight": 1.5
+      }
+    },
+    "notes": "",
+    "styleRules": []
+  }
+}

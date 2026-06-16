@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Varun G — GenAI Developer specializing in enterprise AI solutions, RAG chatbots, and document processing pipelines." />
+  <meta name="author" content="Varun G" />
+  <title>Varun G — GenAI Developer</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a href="#hero" class="nav__logo">Varun<span>G</span></a>
+
+      <nav class="nav__links" id="navLinks">
+        <a href="#about" class="nav__link">About</a>
+        <a href="#experience" class="nav__link">Experience</a>
+        <a href="#projects" class="nav__link">Projects</a>
+        <a href="#skills" class="nav__link">Skills</a>
+        <a href="#education" class="nav__link">Education</a>
+        <a href="#contact" class="nav__link">Contact</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="hero__content container">
+      <p class="hero__greeting reveal">Hi, I'm</p>
+      <h1 class="hero__name reveal">Varun G</h1>
+      <h2 class="hero__role">
+        <span class="hero__typed" id="typed"></span><span class="hero__cursor">|</span>
+      </h2>
+      <p class="hero__summary reveal">
+        Building enterprise AI solutions — RAG chatbots, document-processing pipelines,
+        and data-extraction systems powered by Langchain, Langgraph &amp; GPT-4o.
+      </p>
+      <div class="hero__cta reveal">
+        <a href="#projects" class="btn btn--primary">View Projects</a>
+        <a href="#contact" class="btn btn--ghost">Get in Touch</a>
+      </div>
+      <div class="hero__socials reveal">
+        <a href="https://www.linkedin.com/in/varun-g-1b6757343" target="_blank" rel="noopener" aria-label="LinkedIn" class="hero__social">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0V8zm7.5 0h4.78v2.19h.07c.67-1.27 2.3-2.61 4.74-2.61C22.4 7.58 24 10 24 14.27V24h-5v-8.63c0-2.06-.04-4.71-2.87-4.71-2.88 0-3.32 2.25-3.32 4.56V24h-5V8z"/></svg>
+        </a>
+        <a href="mailto:varungangu1@gmail.com" aria-label="Email" class="hero__social">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 13.065 1.5 6.75V18a1.5 1.5 0 0 0 1.5 1.5h18a1.5 1.5 0 0 0 1.5-1.5V6.75L12 13.065zM12 11 22.29 4.7A1.49 1.49 0 0 0 21 4H3a1.49 1.49 0 0 0-1.29.7L12 11z"/></svg>
+        </a>
+        <a href="https://varun-g-12.github.io/ResumeWebsite/" target="_blank" rel="noopener" aria-label="Resume site" class="hero__social">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2 4 4h-4V4zM8 13h8v2H8v-2zm0 4h8v2H8v-2zm0-8h3v2H8V9z"/></svg>
+        </a>
+      </div>
+    </div>
+    <a href="#about" class="hero__scroll" aria-label="Scroll down"><span></span></a>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about section" id="about">
+    <div class="container">
+      <h2 class="section__title reveal"><span class="section__num">01.</span> About Me</h2>
+      <div class="about__grid">
+        <div class="about__photo reveal">
+          <div class="about__photo-frame">
+            <!-- Profile photo; falls back to SVG avatar if the image is missing -->
+            <img src="assets/images/profile.jpg" alt="Varun G" class="about__avatar"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+            <svg viewBox="0 0 200 200" class="about__avatar" role="img" aria-label="Avatar placeholder" style="display:none;">
+              <defs>
+                <linearGradient id="ava" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#1a1a25"/>
+                  <stop offset="100%" stop-color="#111118"/>
+                </linearGradient>
+              </defs>
+              <rect width="200" height="200" fill="url(#ava)"/>
+              <circle cx="100" cy="78" r="34" fill="#dc2626" opacity="0.85"/>
+              <path d="M40 180c0-33 27-56 60-56s60 23 60 56z" fill="#dc2626" opacity="0.85"/>
+            </svg>
+          </div>
+        </div>
+        <div class="about__text reveal">
+          <p>
+            GenAI Developer specializing in enterprise AI solutions with <strong>4+ years</strong>
+            of Python development experience. Proven track record of reducing operational time by
+            <strong>95%</strong> through AI-powered automation (GRD project).
+          </p>
+          <p>
+            Expert in building RAG-based chatbots, document processing pipelines, and data extraction
+            systems using Langchain, Langgraph, and GPT-4o. Awarded for innovative AI solutions at the
+            MITC Hackathon 2024.
+          </p>
+          <div class="about__stats">
+            <div class="stat">
+              <span class="stat__num" data-count="4" data-suffix="+">0</span>
+              <span class="stat__label">Years Experience</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num" data-count="2">0</span>
+              <span class="stat__label">Hackathon Awards</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num" data-count="95" data-suffix="%">0</span>
+              <span class="stat__label">Efficiency Gains</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section class="experience section" id="experience">
+    <div class="container">
+      <h2 class="section__title reveal"><span class="section__num">02.</span> Experience</h2>
+      <div class="timeline" id="timeline">
+
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <div class="timeline__card">
+            <span class="timeline__period">2024 – Present</span>
+            <h3 class="timeline__role">GenAI Developer</h3>
+            <span class="timeline__company">Merck Group · Bengaluru</span>
+            <ul class="timeline__desc">
+              <li>Develop AI-powered applications with a focus on Generative AI.</li>
+              <li>Build conversational AI systems, document-processing pipelines &amp; data-extraction solutions.</li>
+              <li>Hands-on with Langchain, Langgraph &amp; vector databases like Qdrant for multi-modal retrieval.</li>
+              <li>Optimize complex processes, significantly improving operational efficiency.</li>
+              <li>Award-winning innovator recognized in hackathons and internal competitions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <div class="timeline__card">
+            <span class="timeline__period">2021 – 2024</span>
+            <h3 class="timeline__role">Python Developer</h3>
+            <span class="timeline__company">Merck Group · Bengaluru</span>
+            <ul class="timeline__desc">
+              <li>Engineered an end-to-end data-transformation pipeline, revolutionising data processing.</li>
+              <li>Built robust Python scripts to parse complex, multi-sheet Excel files.</li>
+              <li>Implemented data cleaning, validation &amp; type standardization for data integrity.</li>
+              <li>Added automated quality checks &amp; error logging, reducing manual intervention.</li>
+              <li>Enabled interactive Tableau dashboards for real-time, data-driven insights.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <div class="timeline__card">
+            <span class="timeline__period">2019 – 2021</span>
+            <h3 class="timeline__role">Application Support Engineer</h3>
+            <span class="timeline__company">Merck Group · Bengaluru</span>
+            <ul class="timeline__desc">
+              <li>Began career as Application Support Engineer with a strong technical foundation.</li>
+              <li>Supported GxP &amp; Non-GxP applications, ensuring regulatory compliance.</li>
+              <li>Developed expertise in RFC &amp; change-management workflows, streamlining operations.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <h2 class="section__title reveal"><span class="section__num">03.</span> Projects</h2>
+      <div class="projects__grid" id="projectsGrid">
+        <!-- Cards injected via JS for consistency + modal data -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <h2 class="section__title reveal"><span class="section__num">04.</span> Skills</h2>
+      <div class="skills__grid" id="skillsGrid">
+        <!-- Rings injected via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EDUCATION & AWARDS ============ -->
+  <section class="edu section" id="education">
+    <div class="container">
+      <h2 class="section__title reveal"><span class="section__num">05.</span> Education &amp; Awards</h2>
+      <div class="edu__grid">
+        <div class="edu__col reveal">
+          <h3 class="edu__heading">Education</h3>
+          <div class="edu__card">
+            <h4>M.Sc. — Agriculture Statistics</h4>
+            <span class="edu__meta">G.K.V.K, Bengaluru · 2016 – 2018</span>
+            <span class="edu__grade">CGPA 8.2</span>
+          </div>
+          <div class="edu__card">
+            <h4>B.Sc. — Agriculture</h4>
+            <span class="edu__meta">UAS, Dharwad · 2012 – 2016</span>
+            <span class="edu__grade">CGPA 7.25</span>
+          </div>
+        </div>
+        <div class="edu__col reveal">
+          <h3 class="edu__heading">Awards</h3>
+          <div class="edu__card edu__card--award">
+            <h4>Be Curious &amp; Innovate Boldly Award</h4>
+            <span class="edu__meta">Runner-up · 2024</span>
+          </div>
+          <div class="edu__card edu__card--award">
+            <h4>MITC Hackathon</h4>
+            <span class="edu__meta">Runner-up · 2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <h2 class="section__title reveal"><span class="section__num">06.</span> Get in Touch</h2>
+      <div class="contact__card reveal">
+        <span class="contact__location">Bengaluru, India</span>
+        <p class="contact__text">
+          I'm always open to discussing GenAI projects, collaborations, or opportunities.
+          Feel free to reach out.
+        </p>
+        <div class="contact__links">
+          <a href="mailto:varungangu1@gmail.com" class="btn btn--primary">
+            varungangu1@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/varun-g-1b6757343" target="_blank" rel="noopener" class="btn btn--ghost">
+            LinkedIn Profile
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year"></span> Varun G · Built with HTML / CSS / JS</span>
+      <nav class="footer__links">
+        <a href="#hero">Top</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ============ PROJECT MODAL ============ -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" data-close aria-label="Close">&times;</button>
+      <span class="modal__period" id="modalPeriod"></span>
+      <h3 class="modal__title" id="modalTitle"></h3>
+      <p class="modal__desc" id="modalDesc"></p>
+      <div class="modal__tags" id="modalTags"></div>
+    </div>
+  </div>
+
+  <script src="js/particles.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
