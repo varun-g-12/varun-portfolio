@@ -5,22 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Varun G — GenAI Developer specializing in enterprise AI solutions, RAG chatbots, and document processing pipelines." />
   <meta name="author" content="Varun G" />
+  <meta name="theme-color" content="#08090c" />
   <title>Varun G — GenAI Developer</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/animations.css" />
 </head>
 <body>
 
+  <!-- ============ PRELOADER ============ -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__count">0<span>%</span></div>
+    <div class="preloader__bar"></div>
+  </div>
+
+  <!-- ============ ATMOSPHERE LAYERS ============ -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
   <!-- ============ NAVIGATION ============ -->
   <header class="nav" id="nav">
     <div class="nav__inner container">
-      <a href="#hero" class="nav__logo">Varun<span>G</span></a>
+      <a href="#hero" class="nav__logo">Varun<span>.G</span></a>
 
       <nav class="nav__links" id="navLinks">
         <a href="#about" class="nav__link">About</a>
@@ -41,20 +53,20 @@
   <section class="hero" id="hero">
     <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
     <div class="hero__content container">
-      <p class="hero__greeting reveal">Hi, I'm</p>
-      <h1 class="hero__name reveal">Varun G</h1>
+      <p class="hero__eyebrow">GenAI Developer · Bengaluru</p>
+      <h1 class="hero__name" id="heroName">Varun G</h1>
       <h2 class="hero__role">
-        <span class="hero__typed" id="typed"></span><span class="hero__cursor">|</span>
+        <span class="hero__typed" id="typed"></span><span class="hero__cursor">_</span>
       </h2>
-      <p class="hero__summary reveal">
-        Building enterprise AI solutions — RAG chatbots, document-processing pipelines,
-        and data-extraction systems powered by Langchain, Langgraph &amp; GPT-4o.
+      <p class="hero__summary">
+        Building enterprise AI systems — <strong>RAG chatbots</strong>, document-processing
+        pipelines, and data-extraction tooling powered by Langchain, Langgraph &amp; GPT-4o.
       </p>
-      <div class="hero__cta reveal">
-        <a href="#projects" class="btn btn--primary">View Projects</a>
-        <a href="#contact" class="btn btn--ghost">Get in Touch</a>
+      <div class="hero__cta">
+        <a href="#projects" class="btn btn--primary magnetic">View Projects</a>
+        <a href="#contact" class="btn btn--ghost magnetic">Get in Touch</a>
       </div>
-      <div class="hero__socials reveal">
+      <div class="hero__socials">
         <a href="https://www.linkedin.com/in/varun-g-1b6757343" target="_blank" rel="noopener" aria-label="LinkedIn" class="hero__social">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0V8zm7.5 0h4.78v2.19h.07c.67-1.27 2.3-2.61 4.74-2.61C22.4 7.58 24 10 24 14.27V24h-5v-8.63c0-2.06-.04-4.71-2.87-4.71-2.88 0-3.32 2.25-3.32 4.56V24h-5V8z"/></svg>
         </a>
@@ -72,49 +84,53 @@
   <!-- ============ ABOUT ============ -->
   <section class="about section" id="about">
     <div class="container">
-      <h2 class="section__title reveal"><span class="section__num">01.</span> About Me</h2>
+      <div class="section__head" data-reveal>
+        <span class="section__num">01</span>
+        <h2 class="section__title">About</h2>
+        <span class="section__line"></span>
+      </div>
       <div class="about__grid">
-        <div class="about__photo reveal">
-          <div class="about__photo-frame">
-            <!-- Profile photo; falls back to SVG avatar if the image is missing -->
-            <img src="assets/images/profile.jpg" alt="Varun G" class="about__avatar"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
-            <svg viewBox="0 0 200 200" class="about__avatar" role="img" aria-label="Avatar placeholder" style="display:none;">
-              <defs>
-                <linearGradient id="ava" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#1a1a25"/>
-                  <stop offset="100%" stop-color="#111118"/>
-                </linearGradient>
-              </defs>
-              <rect width="200" height="200" fill="url(#ava)"/>
-              <circle cx="100" cy="78" r="34" fill="#dc2626" opacity="0.85"/>
-              <path d="M40 180c0-33 27-56 60-56s60 23 60 56z" fill="#dc2626" opacity="0.85"/>
-            </svg>
-          </div>
-        </div>
-        <div class="about__text reveal">
+        <div class="about__text" data-reveal>
           <p>
             GenAI Developer specializing in enterprise AI solutions with <strong>4+ years</strong>
             of Python development experience. Proven track record of reducing operational time by
             <strong>95%</strong> through AI-powered automation (GRD project).
           </p>
           <p>
-            Expert in building RAG-based chatbots, document processing pipelines, and data extraction
+            Expert in building RAG-based chatbots, document-processing pipelines, and data-extraction
             systems using Langchain, Langgraph, and GPT-4o. Awarded for innovative AI solutions at the
-            MITC Hackathon 2024.
+            <strong>MITC Hackathon 2024</strong>.
           </p>
+        </div>
+        <div class="about__side" data-reveal>
+          <div class="about__photo-frame" data-speed="0.5">
+            <!-- Profile photo; falls back to SVG avatar if the image is missing -->
+            <img src="assets/images/profile.jpg" alt="Varun G" class="about__avatar"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+            <svg viewBox="0 0 200 200" class="about__avatar" role="img" aria-label="Avatar placeholder" style="display:none;">
+              <defs>
+                <linearGradient id="ava" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#11141b"/>
+                  <stop offset="100%" stop-color="#0d0f14"/>
+                </linearGradient>
+              </defs>
+              <rect width="200" height="200" fill="url(#ava)"/>
+              <circle cx="100" cy="78" r="34" fill="#c6f24e" opacity="0.85"/>
+              <path d="M40 180c0-33 27-56 60-56s60 23 60 56z" fill="#c6f24e" opacity="0.85"/>
+            </svg>
+          </div>
           <div class="about__stats">
             <div class="stat">
               <span class="stat__num" data-count="4" data-suffix="+">0</span>
-              <span class="stat__label">Years Experience</span>
+              <span class="stat__label">Years Exp.</span>
             </div>
             <div class="stat">
               <span class="stat__num" data-count="2">0</span>
-              <span class="stat__label">Hackathon Awards</span>
+              <span class="stat__label">Awards</span>
             </div>
             <div class="stat">
               <span class="stat__num" data-count="95" data-suffix="%">0</span>
-              <span class="stat__label">Efficiency Gains</span>
+              <span class="stat__label">Faster</span>
             </div>
           </div>
         </div>
@@ -125,10 +141,14 @@
   <!-- ============ EXPERIENCE ============ -->
   <section class="experience section" id="experience">
     <div class="container">
-      <h2 class="section__title reveal"><span class="section__num">02.</span> Experience</h2>
+      <div class="section__head" data-reveal>
+        <span class="section__num">02</span>
+        <h2 class="section__title">Experience</h2>
+        <span class="section__line"></span>
+      </div>
       <div class="timeline" id="timeline">
 
-        <div class="timeline__item reveal">
+        <div class="timeline__item" data-reveal>
           <div class="timeline__dot"></div>
           <div class="timeline__card">
             <span class="timeline__period">2024 – Present</span>
@@ -144,7 +164,7 @@
           </div>
         </div>
 
-        <div class="timeline__item reveal">
+        <div class="timeline__item" data-reveal>
           <div class="timeline__dot"></div>
           <div class="timeline__card">
             <span class="timeline__period">2021 – 2024</span>
@@ -160,7 +180,7 @@
           </div>
         </div>
 
-        <div class="timeline__item reveal">
+        <div class="timeline__item" data-reveal>
           <div class="timeline__dot"></div>
           <div class="timeline__card">
             <span class="timeline__period">2019 – 2021</span>
@@ -181,7 +201,11 @@
   <!-- ============ PROJECTS ============ -->
   <section class="projects section" id="projects">
     <div class="container">
-      <h2 class="section__title reveal"><span class="section__num">03.</span> Projects</h2>
+      <div class="section__head" data-reveal>
+        <span class="section__num">03</span>
+        <h2 class="section__title">Selected Work</h2>
+        <span class="section__line"></span>
+      </div>
       <div class="projects__grid" id="projectsGrid">
         <!-- Cards injected via JS for consistency + modal data -->
       </div>
@@ -191,7 +215,11 @@
   <!-- ============ SKILLS ============ -->
   <section class="skills section" id="skills">
     <div class="container">
-      <h2 class="section__title reveal"><span class="section__num">04.</span> Skills</h2>
+      <div class="section__head" data-reveal>
+        <span class="section__num">04</span>
+        <h2 class="section__title">Skills</h2>
+        <span class="section__line"></span>
+      </div>
       <div class="skills__grid" id="skillsGrid">
         <!-- Rings injected via JS -->
       </div>
@@ -201,9 +229,13 @@
   <!-- ============ EDUCATION & AWARDS ============ -->
   <section class="edu section" id="education">
     <div class="container">
-      <h2 class="section__title reveal"><span class="section__num">05.</span> Education &amp; Awards</h2>
+      <div class="section__head" data-reveal>
+        <span class="section__num">05</span>
+        <h2 class="section__title">Education &amp; Awards</h2>
+        <span class="section__line"></span>
+      </div>
       <div class="edu__grid">
-        <div class="edu__col reveal">
+        <div class="edu__col" data-reveal>
           <h3 class="edu__heading">Education</h3>
           <div class="edu__card">
             <h4>M.Sc. — Agriculture Statistics</h4>
@@ -216,7 +248,7 @@
             <span class="edu__grade">CGPA 7.25</span>
           </div>
         </div>
-        <div class="edu__col reveal">
+        <div class="edu__col" data-reveal>
           <h3 class="edu__heading">Awards</h3>
           <div class="edu__card edu__card--award">
             <h4>Be Curious &amp; Innovate Boldly Award</h4>
@@ -234,18 +266,22 @@
   <!-- ============ CONTACT ============ -->
   <section class="contact section" id="contact">
     <div class="container">
-      <h2 class="section__title reveal"><span class="section__num">06.</span> Get in Touch</h2>
-      <div class="contact__card reveal">
+      <div class="section__head" data-reveal>
+        <span class="section__num">06</span>
+        <h2 class="section__title">Get in Touch</h2>
+        <span class="section__line"></span>
+      </div>
+      <div class="contact__card panel" data-reveal>
         <span class="contact__location">Bengaluru, India</span>
         <p class="contact__text">
           I'm always open to discussing GenAI projects, collaborations, or opportunities.
           Feel free to reach out.
         </p>
         <div class="contact__links">
-          <a href="mailto:varungangu1@gmail.com" class="btn btn--primary">
+          <a href="mailto:varungangu1@gmail.com" class="btn btn--primary magnetic">
             varungangu1@gmail.com
           </a>
-          <a href="https://www.linkedin.com/in/varun-g-1b6757343" target="_blank" rel="noopener" class="btn btn--ghost">
+          <a href="https://www.linkedin.com/in/varun-g-1b6757343" target="_blank" rel="noopener" class="btn btn--ghost magnetic">
             LinkedIn Profile
           </a>
         </div>
@@ -256,7 +292,7 @@
   <!-- ============ FOOTER ============ -->
   <footer class="footer">
     <div class="container footer__inner">
-      <span>© <span id="year"></span> Varun G · Built with HTML / CSS / JS</span>
+      <span>© <span id="year"></span> Varun G · Designed &amp; built with HTML / CSS / JS</span>
       <nav class="footer__links">
         <a href="#hero">Top</a>
         <a href="#projects">Projects</a>
@@ -277,6 +313,12 @@
     </div>
   </div>
 
+  <!-- ============ LIBS (CDN, deferred, order-preserved) ============ -->
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+
+  <!-- ============ APP ============ -->
   <script src="js/particles.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>

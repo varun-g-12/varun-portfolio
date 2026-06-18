@@ -1,6 +1,7 @@
 /* ============================================================
-   Varun G — Portfolio  ·  particles.js
-   Hero neural-network canvas animation (AI motif)
+   Varun G — Portfolio  ·  background (loaded as particles.js)
+   WebGL aurora gradient-mesh for the hero canvas.
+   Falls back to a static CSS gradient on no-WebGL / reduced-motion.
    ============================================================ */
 (function () {
   'use strict';
@@ -9,140 +10,162 @@
   if (!canvas) return;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const ctx = canvas.getContext('2d');
 
-  let width, height, dpr;
-  let nodes = [];
-  let rafId = null;
-  const mouse = { x: null, y: null, radius: 140 };
-
-  const COLOR = '220, 38, 38';      // primary red (rgb)
-  const LINK_DIST = 130;            // max distance to draw a line
-
-  function nodeCount() {
-    // density scales with viewport, capped for perf
-    return Math.min(90, Math.floor((width * height) / 16000));
+  // Static fallback: hide canvas, let CSS paint the aurora.
+  function fallback() {
+    canvas.style.display = 'none';
+    document.documentElement.classList.add('no-webgl');
   }
 
+  if (reduceMotion) { fallback(); return; }
+
+  let gl;
+  try {
+    gl = canvas.getContext('webgl', { antialias: true, alpha: true, premultipliedAlpha: false }) ||
+         canvas.getContext('experimental-webgl');
+  } catch (e) { /* ignore */ }
+  if (!gl) { fallback(); return; }
+
+  /* ---------- Shaders ---------- */
+  const VERT = `
+    attribute vec2 aPos;
+    void main() { gl_Position = vec4(aPos, 0.0, 1.0); }
+  `;
+
+  // FBM simplex-style noise → flowing aurora mesh in indigo → teal → lime.
+  const FRAG = `
+    precision highp float;
+    uniform vec2  uRes;
+    uniform float uTime;
+
+    vec3 permute(vec3 x){ return mod(((x*34.0)+1.0)*x, 289.0); }
+    float snoise(vec2 v){
+      const vec4 C = vec4(0.211324865405187, 0.366025403784439,
+                         -0.577350269189626, 0.024390243902439);
+      vec2 i  = floor(v + dot(v, C.yy));
+      vec2 x0 = v - i + dot(i, C.xx);
+      vec2 i1 = (x0.x > x0.y) ? vec2(1.0,0.0) : vec2(0.0,1.0);
+      vec4 x12 = x0.xyxy + C.xxzz; x12.xy -= i1;
+      i = mod(i, 289.0);
+      vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0))
+                              + i.x + vec3(0.0, i1.x, 1.0));
+      vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy),
+                              dot(x12.zw,x12.zw)), 0.0);
+      m = m*m; m = m*m;
+      vec3 x = 2.0 * fract(p * C.www) - 1.0;
+      vec3 h = abs(x) - 0.5;
+      vec3 ox = floor(x + 0.5);
+      vec3 a0 = x - ox;
+      m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
+      vec3 g;
+      g.x  = a0.x  * x0.x  + h.x  * x0.y;
+      g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+      return 130.0 * dot(m, g);
+    }
+
+    float fbm(vec2 p){
+      float v = 0.0, a = 0.5;
+      for (int i = 0; i < 5; i++){
+        v += a * snoise(p);
+        p *= 2.0; a *= 0.5;
+      }
+      return v;
+    }
+
+    void main(){
+      vec2 uv = gl_FragCoord.xy / uRes.xy;
+      vec2 p  = uv;
+      p.x *= uRes.x / uRes.y;
+
+      float t = uTime * 0.04;
+      float n  = fbm(p * 1.6 + vec2(t, t * 0.7));
+      float n2 = fbm(p * 2.4 - vec2(t * 0.6, t));
+
+      // Palette: deep base → indigo → teal → faint electric lime
+      vec3 base   = vec3(0.031, 0.035, 0.047);   // #08090c
+      vec3 indigo = vec3(0.105, 0.121, 0.227);   // #1b1f3a
+      vec3 teal   = vec3(0.058, 0.239, 0.227);   // #0f3d3a
+      vec3 lime   = vec3(0.776, 0.949, 0.305);   // #c6f24e
+
+      vec3 col = base;
+      col = mix(col, indigo, smoothstep(-0.2, 0.9, n));
+      col = mix(col, teal,   smoothstep(0.1, 1.0, n2) * 0.55);
+      col = mix(col, lime,   smoothstep(0.78, 1.0, n) * 0.10);
+
+      // Radial vignette so content stays readable
+      float d = distance(uv, vec2(0.62, 0.45));
+      col *= 1.0 - smoothstep(0.35, 1.05, d) * 0.85;
+
+      gl_FragColor = vec4(col, 1.0);
+    }
+  `;
+
+  function compile(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+      console.warn('Shader error:', gl.getShaderInfoLog(s));
+      return null;
+    }
+    return s;
+  }
+
+  const vs = compile(gl.VERTEX_SHADER, VERT);
+  const fs = compile(gl.FRAGMENT_SHADER, FRAG);
+  if (!vs || !fs) { fallback(); return; }
+
+  const prog = gl.createProgram();
+  gl.attachShader(prog, vs);
+  gl.attachShader(prog, fs);
+  gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { fallback(); return; }
+  gl.useProgram(prog);
+
+  // Full-screen quad
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER,
+    new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const aPos = gl.getAttribLocation(prog, 'aPos');
+  gl.enableVertexAttribArray(aPos);
+  gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+  const uRes  = gl.getUniformLocation(prog, 'uRes');
+  const uTime = gl.getUniformLocation(prog, 'uTime');
+
+  const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = canvas.clientWidth;
-    height = canvas.clientHeight;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    initNodes();
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    canvas.width  = Math.max(1, Math.floor(w * DPR));
+    canvas.height = Math.max(1, Math.floor(h * DPR));
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.uniform2f(uRes, canvas.width, canvas.height);
   }
-
-  function initNodes() {
-    nodes = [];
-    const count = nodeCount();
-    for (let i = 0; i < count; i++) {
-      nodes.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        r: Math.random() * 1.8 + 1
-      });
-    }
-  }
-
-  function step() {
-    ctx.clearRect(0, 0, width, height);
-
-    for (let i = 0; i < nodes.length; i++) {
-      const n = nodes[i];
-
-      // move
-      n.x += n.vx;
-      n.y += n.vy;
-
-      // bounce off edges
-      if (n.x < 0 || n.x > width) n.vx *= -1;
-      if (n.y < 0 || n.y > height) n.vy *= -1;
-
-      // mouse repulsion
-      if (mouse.x !== null) {
-        const dx = n.x - mouse.x;
-        const dy = n.y - mouse.y;
-        const dist = Math.hypot(dx, dy);
-        if (dist < mouse.radius && dist > 0) {
-          const force = (mouse.radius - dist) / mouse.radius;
-          n.x += (dx / dist) * force * 2.2;
-          n.y += (dy / dist) * force * 2.2;
-        }
-      }
-
-      // draw node
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${COLOR}, 0.75)`;
-      ctx.fill();
-
-      // links
-      for (let j = i + 1; j < nodes.length; j++) {
-        const m = nodes[j];
-        const dx = n.x - m.x;
-        const dy = n.y - m.y;
-        const dist = Math.hypot(dx, dy);
-        if (dist < LINK_DIST) {
-          const alpha = (1 - dist / LINK_DIST) * 0.35;
-          ctx.beginPath();
-          ctx.moveTo(n.x, n.y);
-          ctx.lineTo(m.x, m.y);
-          ctx.strokeStyle = `rgba(${COLOR}, ${alpha})`;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-      }
-    }
-
-    rafId = requestAnimationFrame(step);
-  }
-
-  // Pause when hero is offscreen for performance
-  function observeVisibility() {
-    const hero = document.getElementById('hero');
-    if (!('IntersectionObserver' in window) || !hero) return;
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          if (!rafId && !reduceMotion) step();
-        } else if (rafId) {
-          cancelAnimationFrame(rafId);
-          rafId = null;
-        }
-      });
-    }, { threshold: 0 });
-    io.observe(hero);
-  }
-
-  // Events
-  window.addEventListener('resize', debounce(resize, 200));
-  canvas.addEventListener('mousemove', (e) => {
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
-  canvas.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
-
-  function debounce(fn, wait) {
-    let t;
-    return function (...args) {
-      clearTimeout(t);
-      t = setTimeout(() => fn.apply(this, args), wait);
-    };
-  }
-
-  // Init
+  window.addEventListener('resize', resize, { passive: true });
   resize();
-  if (reduceMotion) {
-    step();                 // render one static frame
-    cancelAnimationFrame(rafId);
-    rafId = null;
-  } else {
-    step();
-    observeVisibility();
+
+  // Render only while the hero is on screen (perf).
+  let visible = true, running = true, raf = 0;
+  const hero = document.getElementById('hero');
+  if (hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => {
+      visible = entries[0].isIntersecting;
+      if (visible && running && !raf) raf = requestAnimationFrame(frame);
+    }, { threshold: 0 }).observe(hero);
   }
+  document.addEventListener('visibilitychange', () => {
+    running = !document.hidden;
+    if (running && visible && !raf) raf = requestAnimationFrame(frame);
+  });
+
+  const start = performance.now();
+  function frame(now) {
+    raf = 0;
+    if (!visible || !running) return;
+    gl.uniform1f(uTime, (now - start) / 1000);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    raf = requestAnimationFrame(frame);
+  }
+  raf = requestAnimationFrame(frame);
 })();

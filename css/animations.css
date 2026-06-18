@@ -1,6 +1,6 @@
 /* ============================================================
    Varun G — Portfolio  ·  animations.css
-   Keyframes & scroll-reveal transitions
+   Keyframes + scroll-reveal base state (GSAP-driven where present)
    ============================================================ */
 
 /* ---------- Keyframes ---------- */
@@ -16,53 +16,48 @@
   100% { opacity: 0; }
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); opacity: 1; }
+  50%      { box-shadow: 0 0 0 6px rgba(198,242,78,0); opacity: 0.7; }
 }
 
-@keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 16px var(--glow); }
-  50%      { box-shadow: 0 0 32px var(--glow); }
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10%  { transform: translate(-4%, -6%); }
+  30%  { transform: translate(4%, 2%); }
+  50%  { transform: translate(-2%, 6%); }
+  70%  { transform: translate(6%, -2%); }
+  90%  { transform: translate(-6%, 4%); }
 }
 
-@keyframes floatIn {
-  from { opacity: 0; transform: scale(0.96); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-/* ---------- Scroll-reveal ---------- */
-.reveal {
+/* ---------- Scroll-reveal base state ----------
+   GSAP animates these to their natural position. When GSAP is
+   unavailable / reduced-motion, the .no-anim fallback reveals all. */
+[data-reveal] {
   opacity: 0;
-  transform: translateY(34px);
-  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(36px);
   will-change: opacity, transform;
 }
-.reveal.in-view {
+.no-anim [data-reveal],
+[data-reveal].in-view {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
 }
 
-/* Stagger helpers (applied via JS delay too) */
-.reveal[data-delay="1"] { transition-delay: 0.08s; }
-.reveal[data-delay="2"] { transition-delay: 0.16s; }
-.reveal[data-delay="3"] { transition-delay: 0.24s; }
-.reveal[data-delay="4"] { transition-delay: 0.32s; }
-
-/* Hero entrance — staggered without IntersectionObserver (above the fold) */
-.hero__greeting { animation: fadeUp 0.6s 0.1s ease backwards; }
-.hero__name     { animation: fadeUp 0.6s 0.2s ease backwards; }
-.hero__summary  { animation: fadeUp 0.6s 0.5s ease backwards; }
-.hero__cta      { animation: fadeUp 0.6s 0.65s ease backwards; }
-.hero__socials  { animation: fadeUp 0.6s 0.8s ease backwards; }
-/* Hero reveals are visible by default (override .reveal hidden state) */
-.hero .reveal { opacity: 1; transform: none; }
+/* Hero entrance is handled by GSAP; reveal immediately as a fallback */
+.no-anim .hero [data-reveal],
+.no-anim .hero__name .char { opacity: 1; transform: none; }
 
 /* Modal entrance */
-.modal.open .modal__dialog { animation: floatIn 0.3s ease; }
+.modal.open .modal__dialog { animation: floatIn 0.35s var(--ease); }
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
 
-/* CTA pulse glow on focus-visible */
-.btn--primary:focus-visible { animation: glowPulse 1.4s infinite; outline: none; }
-
-/* Project card tilt smoothing handled in JS; add subtle baseline */
-.project-card { transition: transform 0.15s ease, border-color var(--transition), box-shadow var(--transition); }
+/* CTA focus glow */
+.btn--primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-soft), 0 0 28px var(--accent-glow);
+}
